@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Selecionar Turma</title>
+    <style>
+        /* Reset básico */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body.selecionar-bg {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #121212 0%, #1e1e1e 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+        
+        .turmas-container {
+            background: #222222;
+            color: #00bcd4;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 188, 212, 0.3);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .turmas-container h1 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #00bcd4;
+        }
+        
+        .direction-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+        
+        .direction-btn {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            color: #b8860b;
+            border: none;
+            border-radius: 8px;
+            padding: 15px 25px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .direction-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+            background: linear-gradient(135deg, #ffe0b2 0%, #ffcc80 100%);
+            text-decoration: none;
+        }
+        
+        .direction-title {
+            color: #fff3e0;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .turmas-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .turma-btn {
+            flex: 1 1 45%;
+            background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+            border-radius: 8px;
+            padding: 15px 0;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .turma-btn:hover {
+            background: linear-gradient(135deg, #0097a7 0%, #00796b 100%);
+            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.6);
+            text-decoration: none;
+        }
+        
+        .section-divider {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00bcd4, transparent);
+            margin: 25px 0;
+        }
+        
+        .classes-title {
+            font-size: 20px;
+            color: #00bcd4;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 480px) {
+            .turma-btn {
+                flex: 1 1 100%;
+                font-size: 16px;
+                padding: 12px 0;
+            }
+            
+            .direction-btn {
+                width: 100%;
+                font-size: 16px;
+                padding: 12px 20px;
+            }
+            
+            .turmas-container {
+                padding: 20px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body class="selecionar-bg">
+    <div class="turmas-container">
+        <h1>Sistema de Gestão Escolar</h1>
+        
+        <!-- Seção da Direção -->
+        <div class="direction-section">
+            <div class="direction-title">🏛️ Área Administrativa</div>
+            <a href="graficosDirecao.html" class="direction-btn">
+                📊 Painel da Direção
+            </a>
+        </div>
+        
+        <!-- Divisor -->
+        <div class="section-divider"></div>
+        
+        <!-- Seção das Turmas -->
+        <div class="classes-title">📚 Selecione uma Turma</div>
+        <div class="turmas-grid"></div>
+    </div>
+
+    <script>
+        const grid = document.querySelector('.turmas-grid');
+        for (let ano = 1; ano <= 5; ano++) {
+            for (let letra of['A', 'B', 'C', 'D']) {
+                const a = document.createElement('a');
+                a.href = `turmas/${ano}${letra}.html`; // link corrigido para pasta turmas/
+                a.className = 'turma-btn';
+                a.textContent = `Turma ${ano}${letra}`;
+                grid.appendChild(a);
+            }
+        }
+    </script>
+</body>
+
+</html>

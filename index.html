@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login - Sistema de Cadastro</title>
+    <script src="https://unpkg.com/docx@8.4.0/build/index.umd.js"></script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #121212 0%, #1e1e1e 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            color: #e0e0e0;
+        }
+        
+        .login-container {
+            background: #222222;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 188, 212, 0.4);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #00bcd4;
+        }
+        
+        .login-container input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #444444;
+            background-color: #333333;
+            color: #e0e0e0;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .login-container input::placeholder {
+            color: #888888;
+        }
+        
+        .login-container input:focus {
+            outline: none;
+            border-color: #00bcd4;
+            box-shadow: 0 0 8px #00bcd4;
+            background-color: #2a2a2a;
+        }
+        
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            background: #00bcd4;
+            color: #121212;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .login-container button:hover {
+            background: #0097a7;
+            color: #e0e0e0;
+        }
+        
+        .error-message {
+            color: #f44336;
+            margin-top: 10px;
+            min-height: 20px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Acesso ao Sistema</h2>
+        <input type="text" id="username" placeholder="Usuário (admin)" autocomplete="username" />
+        <input type="password" id="password" placeholder="Senha (1234)" autocomplete="current-password" />
+        <button onclick="login()">Entrar</button>
+        <div class="error-message" id="error"></div>
+    </div>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorDiv = document.getElementById('error');
+
+            if (username === 'admin' && password === '1234') {
+                localStorage.setItem('loggedIn', 'true');
+                window.location.href = 'selecionar.html';
+            } else {
+                errorDiv.textContent = 'Usuário ou senha incorretos';
+            }
+        }
+    </script>
+</body>
+
+</html>
